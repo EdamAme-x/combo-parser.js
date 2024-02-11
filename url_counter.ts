@@ -80,12 +80,16 @@ try {
         console.log(`Processed ${index} lines...`);
       }
 
+      try {
+        const url = new URL(parsed.url).origin;
+
       if (parsed.success) {
-        if (!alreadyURL.has(parsed.url)) {
-          alreadyURL.add(parsed.url);
-          await Deno.writeTextFile(outputPath + ".urls.txt", parsed.url + "\n", { append: true });
+        if (!alreadyURL.has(url)) {
+          alreadyURL.add(url);
+          await Deno.writeTextFile(outputPath + ".urls.txt", url + "\n", { append: true });
         }
       }
+      }catch {}
       index++;
     }
   }

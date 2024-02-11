@@ -45,13 +45,9 @@ try {
   console.error(`Error creating output file: ${error}`);
   Deno.exit(1);
 }
-const searchValue = prompt("Enter search value: ") ?? "";
+const searchValue = "";
 
-const minPasswordLength = prompt(
-  "Enter minimum password length (default: 4): ",
-  "4",
-)
-
+const minPasswordLength = "0"
 if (!minPasswordLength || isNaN(Number(minPasswordLength))) {
   console.error("No minimum password length provided.");
   Deno.exit(1);
